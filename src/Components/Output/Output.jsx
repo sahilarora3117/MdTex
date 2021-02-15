@@ -1,24 +1,22 @@
-import React, { Component } from 'react';
-import { TextField } from '@material-ui/core';
-class Output extends Component {
-    render() {
-        return (
-            <div>
-                <TextField
-          id="outlined-multiline-static"
-          label="Output"
-          multiline
-          style={{width:"100%"}}
-          rows={40}
-          defaultValue="Default Value"
-          variant="outlined"
-          color="secondary"
-          inverted
-        />
+import React, { useEffect, useState } from 'react';
 
-            </div>
-        );
+function Output() {
+  const [value, setValue] = useState(localStorage.getItem('Current'));
+
+useEffect(() => {
+    var newVal = localStorage.getItem('Current');
+    if (newVal !== value){
+        setValue(newVal);
     }
-}
+  
+}, [value]);
+
+
+  return (
+    <div>
+        {value}
+    </div>
+  );
+};
 
 export default Output;

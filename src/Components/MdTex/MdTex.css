@@ -1,8 +1,9 @@
 .main {
-    background-color: #282c34;
+    background-color: green;
     min-height: 100vh;
-    display: flex;
-    font-size: calc(10px + 2vmin);
-    color: white;
-    padding-top: 4em;
+}
+
+
+.editor {
+    height: 100%;
 }
