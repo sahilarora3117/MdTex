@@ -1,8 +1,13 @@
-*{
-    margin-top: 9%;
+.something{
     background-color: #1e1e1e;
-    color: #f7f7f7;
-    align-items: center;
+    color:white;
     text-align: center;
-  
+    position: absolute;
+    bottom:0;
+    top:0;
+    left:0;
+    right: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 25%;
 }

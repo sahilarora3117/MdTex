@@ -1,30 +1,32 @@
-import React, { Component } from 'react';
-import './Navigation.css'
-class Navigation extends Component {
-    render() {
-        return (
-            <div>
-                <nav className="bottom-navigation">
-    <section className="bottom-navigation-destination" data-destination-color="#fbbc05">
-        <i className="material-icons">dashboard</i>
-        <span className="bottom-navigation-label">Dashboard</span>
-    </section>
-    <section className="bottom-navigation-destination active" data-destination-color="#ea4335">
-        <i className="material-icons">home</i>
-        <span className="bottom-navigation-label">Home</span>
-    </section>
-    <section className="bottom-navigation-destination" data-destination-color="#34a853">
-        <i className="material-icons">explore</i>
-        <span className="bottom-navigation-label">Explore</span>
-    </section>
-    <section className="bottom-navigation-destination" data-destination-color="#4285f4">
-        <i className="material-icons">account_box</i>
-        <span className="bottom-navigation-label">Account</span>
-    </section>
-</nav>
-            </div>
-        );
-    }
-}
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import FolderIcon from '@material-ui/icons/Folder';
+import RestoreIcon from '@material-ui/icons/Restore';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
 
-export default Navigation;
+const useStyles = makeStyles({
+  root: {
+    width: 500,
+  },
+});
+
+export default function LabelBottomNavigation() {
+  const classes = useStyles();
+  const [value, setValue] = React.useState('recents');
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  return (
+    <BottomNavigation inverted value={value} onChange={handleChange} className={classes.root}>
+      <BottomNavigationAction inverted label="Recents" value="recents" icon={<RestoreIcon />} />
+      <BottomNavigationAction inverted label="Favorites" value="favorites" icon={<FavoriteIcon />} />
+      <BottomNavigationAction inverted label="Nearby" value="nearby" icon={<LocationOnIcon />} />
+      <BottomNavigationAction inverted label="Folder" value="folder" icon={<FolderIcon />} />
+    </BottomNavigation>
+  );
+}

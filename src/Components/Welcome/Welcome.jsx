@@ -22,7 +22,7 @@ class Welcome extends Component {
 
 
 const Home = () => (
-    <Container>
+    <Container className="something">
     <Grid
      container
      direction="row"
