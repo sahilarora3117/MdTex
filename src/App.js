@@ -1,9 +1,11 @@
 import './App.css';
-import MdTex from './Components/MdTex/MdTex'
+import Welcome from './Components/Welcome/Welcome'
+
 function App() {
   return (
+    
     <div className="App">
-      <MdTex className="App-header"/>
+      <Welcome className="App-header"/>
     </div>
   );
 }

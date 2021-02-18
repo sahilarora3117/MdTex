@@ -7,8 +7,7 @@ class MdTex extends Component {
     render() {
         return (
             <div className="main">
-
-                    <Editor className="editor"></Editor>
+                <Editor className="editor"></Editor>
                 <Navigation className="Navigator"/>
 
             </div>
