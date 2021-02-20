@@ -3,11 +3,11 @@ import { Controlled as CodeMirror } from "react-codemirror2";
 import styled from "styled-components";
 import cssToObject from "css-to-object";
 import SplitPane from "react-split-pane";
-
+import Markdown from 'markdown-to-jsx';
 // background: #101010;
 // color: #fff;
 require("codemirror/mode/xml/xml");
-require("codemirror/mode/javascript/javascript");
+require("codemirror/mode/markdown/markdown");
 require("codemirror/mode/css/css");
 require("codemirror/mode/jsx/jsx");
 require("codemirror/lib/codemirror.css");
@@ -28,7 +28,7 @@ const DEFAULT_JSX_OPTIONS = {
   theme: "custom-0",
   autoCloseBrackets: true,
   cursorScrollMargin: 48,
-  mode: "jsx",
+  mode: "markdown",
   lineNumbers: true,
   indentUnit: 2,
   tabSize: 2,
@@ -78,12 +78,8 @@ export  default class Editor extends React.Component {
             options={this.jsxOptions}
             onChange={this.onChange("js")}
           />
-          <PureEditor
-            name="js"
-            value={this.state.cssValue}
-            options={this.cssOptions}
-            onChange={this.onChange("css")}
-          />
+          <Markdown>{this.state.jsValue}</Markdown>
+
         </SplitPane>
         <Style css={this.state.cssValue} />
       </React.Fragment>
