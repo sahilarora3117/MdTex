@@ -14,6 +14,9 @@
     /* font-family: "IBM Plex Mono", monospace; */
   }
 
+.CodeMirror-scroll {
+  height: 100vh;
+}
   .container {
     height: 100%;
     position: fixed;

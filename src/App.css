@@ -22,3 +22,7 @@
 .App {
   background-color: #131325;
 }
+
+.MuiContainer-root {
+  max-width: 100vw !important;
+}
