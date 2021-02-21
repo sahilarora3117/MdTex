@@ -4,6 +4,7 @@ import styled from "styled-components";
 import cssToObject from "css-to-object";
 import SplitPane from "react-split-pane";
 import Markdown from 'markdown-to-jsx';
+import './markdown.css';
 // background: #101010;
 // color: #fff;
 require("codemirror/mode/markdown/markdown");
@@ -54,6 +55,9 @@ export  default class Editor extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <div className="topbar"> 
+
+        </div>
         <SplitPane split="vertical" defaultSize="50%">
           <PureEditor
             name="js"
@@ -62,7 +66,7 @@ export  default class Editor extends React.Component {
             options={this.jsxOptions}
             onChange={this.onChange("js")}
           />
-          <Markdown>{this.state.jsValue}</Markdown>
+          <Markdown className="markdown-body">{this.state.jsValue}</Markdown>
 
 
         </SplitPane>

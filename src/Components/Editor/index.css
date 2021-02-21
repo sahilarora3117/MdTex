@@ -5,7 +5,7 @@
 
   body {
     font-family: "Montserrat", sans-serif;
-    background-color: #131325;
+    background-color: white;
   }
 
   .CodeMirror {
@@ -34,18 +34,17 @@
   .Pane1,
   .Pane2 {
     overflow: scroll;
-    /* Fucky panel shit. */
-    height: calc(100% - 120px);
+    /* height: calc(100% - 120px); */
   }
 
   .Resizer {
     height: 100vh;
     min-width: 2px;
-    background: #333;
+    background: white;
     cursor: row-resize;
   }
 
-  .Topbar {
+  /* .Topbar {
     height: 60px;
     width: 100vw;
     display: flex;
@@ -59,11 +58,9 @@
     left: 0;
     right: 0;
     background: white;
-  }
+  } */
 
-  .container {
-    padding-top: 60px;
-  }
+
 
   .logo {
     font-size: 22px;
