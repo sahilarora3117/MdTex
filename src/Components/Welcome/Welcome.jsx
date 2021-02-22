@@ -2,8 +2,10 @@ import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import MdTex from '../MdTex/MdTex'
 import './Welcome.css'
+import New from './New';
+import Launch from './Open'
 import {Container, Grid, Typography} from '@material-ui/core'
-import { Add, Launch, InfoOutlined, GitHub } from '@material-ui/icons';
+import { Add, InfoOutlined, GitHub, MicNone } from '@material-ui/icons';
 class Welcome extends Component {
     render() {
         return (
@@ -30,21 +32,10 @@ const Home = () => (
      justify="flex-start"
      >
          <Grid item xs={3}>
-           <Link to="/new">
-           
-             <Add style={{ fontSize: 55 }}></Add>
-             <Typography variant="h6" component="h6" gutterBottom>
-             New
-             </Typography>
-             </Link>
-             
-         
+            <New />
          </Grid>
          <Grid item xs={3}>
-             <Launch style={{ fontSize: 55 }}></Launch>
-             <Typography variant="h6" component="h6" gutterBottom>
-             Open
-             </Typography>
+            <Launch />
          </Grid>
          <Grid item xs={3}>
              <InfoOutlined style={{ fontSize: 55 }}></InfoOutlined>

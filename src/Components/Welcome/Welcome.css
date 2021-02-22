@@ -1,5 +1,5 @@
 .something{
-    background-color: #131325;
+    background-color: #1e1e1e;
     color:white;
     text-align: center;
     position: absolute;
@@ -11,3 +11,10 @@
     margin-right: 0;
     padding-top: 25%;
 }
+
+
+.linkers {
+    text-decoration: none;
+    color:black;
+}
+

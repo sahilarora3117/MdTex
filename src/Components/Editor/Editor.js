@@ -1,15 +1,10 @@
 import * as React from "react";
 import { Controlled as CodeMirror } from "react-codemirror2";
-import styled from "styled-components";
-import cssToObject from "css-to-object";
 import SplitPane from "react-split-pane";
 import Markdown from 'markdown-to-jsx';
 import './markdown.css';
-// background: #101010;
-// color: #fff;
 require("codemirror/mode/markdown/markdown");
 require("codemirror/lib/codemirror.css");
-// require("codemirror/theme/dracula.css");
 require("codemirror/theme/panda-syntax.css");
 require("codemirror/theme/material.css");
 require("./theme.css");
@@ -66,9 +61,7 @@ export  default class Editor extends React.Component {
             options={this.jsxOptions}
             onChange={this.onChange("js")}
           />
-          <Markdown className="markdown-body">{this.state.jsValue}</Markdown>
-
-
+          <Markdown className="markdown-body markdown-content">{this.state.jsValue}</Markdown>
         </SplitPane>
         <Style css={this.state.cssValue} />
       </React.Fragment>
