@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import MdTex from '../MdTex/MdTex'
+import OpenMarkdown from '../OpenMarkdown/OpenMarkdown'
+import OpenTex from '../OpenTex/OpenTex'
 import './Welcome.css'
 import New from './New';
 import Launch from './Open'
@@ -11,7 +12,8 @@ class Welcome extends Component {
         return (
             <Router>
                 <Switch>
-                    <Route path="/new" component={Md} />
+                    <Route path="/newmd" component={Md} />
+                    <Route path="/newtex" component={Tex} />
                     <Route path="/" component={Home} />
                 </Switch>
             </Router>       
@@ -55,7 +57,11 @@ const Home = () => (
 )
 
 const Md = () => (
-    <MdTex></MdTex>
+    <OpenMarkdown markdown="#this is markdown"></OpenMarkdown>
+)
+
+const Tex = () => (
+    <OpenTex tex="tex imdeed"></OpenTex>
 )
 
 export default Welcome;

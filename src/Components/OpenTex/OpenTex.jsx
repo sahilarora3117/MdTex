@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import './MdTex.css'
 import Navigation from '../Navigation/Navigation';
-import Editor from '../Editor/Editor';
+import Editor from '../Latex/Editor';
 import {Container, Grid} from '@material-ui/core'
 class MdTex extends Component {
     render() {
         return (
         <div className="container">
+            <Navigation />
 			<Editor />
 		</div>
                 

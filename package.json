@@ -1,6 +1,7 @@
 {
   "name": "mdtex",
   "version": "0.1.0",
+  "homepage": "./",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.3",
@@ -8,23 +9,42 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "concurrently": "^6.0.0",
     "css-to-object": "^1.1.0",
+    "electron-is-dev": "^1.2.0",
     "markdown-to-jsx": "^7.1.1",
     "react": "^17.0.1",
     "react-codemirror": "^1.0.0",
     "react-codemirror2": "^7.2.1",
     "react-dom": "^17.0.1",
+    "react-latex": "^2.0.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "react-split-pane": "^0.1.92",
     "styled-components": "^5.2.1",
+    "wait-on": "^5.2.1",
     "web-vitals": "^0.2.4"
   },
+  "devDependencies": {
+  "electron-builder": "^22.9.1",
+  "electron": "^11.3.0"
+  },
+  "build": {
+    "appId": "com.github.mdtex",
+    "files": [ "build/**/*", "node_modules/**/*" ],
+    "directories":{
+  "buildResources": "assets"
+    }
+  },
+ 
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron-dev": "concurrently \"BROWSER=none npm start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-package": "./node_modules/.bin/electron-builder -c.extraMetadata.main=build/start-electron.js",
+    "preelectron-package": "npm run build"
   },
   "eslintConfig": {
     "extends": [
@@ -44,4 +64,5 @@
       "last 1 safari version"
     ]
   }
+  
 }

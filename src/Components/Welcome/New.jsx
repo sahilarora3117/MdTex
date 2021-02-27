@@ -40,8 +40,8 @@ export default function SimpleMenu() {
         onClose={handleClose}
         inverted
       >
-        <Link to="/new" className="linkers" style={{textDecoration:'none', textDecorationColor:'white' }}><MenuItem>Markdown</MenuItem></Link>
-        <MenuItem>Latex</MenuItem>
+        <Link to="/newmd" className="linkers" style={{textDecoration:'none', textDecorationColor:'white' }}><MenuItem>Markdown</MenuItem></Link>
+        <Link to="/newtex" className="linkers" style={{textDecoration:'none', textDecorationColor:'white' }}><MenuItem>Latex</MenuItem></Link>
       </Menu>
     </div>
   );
