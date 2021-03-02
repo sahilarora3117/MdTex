@@ -1,8 +1,11 @@
 import * as React from "react";
 import { Controlled as CodeMirror } from "react-codemirror2";
 import SplitPane from "react-split-pane";
-import Latex from 'react-latex';
+import 'katex/dist/katex.min.css';
+import { InlineMath, BlockMath } from 'react-katex';
+import katex from 'katex';
 import './markdown.css';
+import { Block } from "@material-ui/icons";
 require("codemirror/mode/markdown/markdown");
 require("codemirror/lib/codemirror.css");
 require("codemirror/theme/panda-syntax.css");
@@ -12,7 +15,7 @@ require("./darcula.css");
 require("./index.css");
 
 const DEFAULT_JS_VALUE =
-  "# Welcome to MdTex\n## Latexxxxxx";
+  "\\int x^2 dx \n\\int x^3 dx";
 
 const DEFAULT_CSS_VALUE =
   '.cm-s-custom-0 {\r\n\tbackground: rgb(19, 19, 37);\r\n\tcolor: rgb(173, 170, 204);\r\n  font-weight: 300;\r\n\tline-height: 1.6;\r\n\tfont-family: "IBM Plex Mono", monospace;\r\n  letter-spacing: 0.425px;\r\n}\r\n\r\n.cm-s-custom-0 .CodeMirror-cursor {\r\n\tborder-color: #fff;\r\n\toutline: 1px solid #fff;\r\n}\r\n\r\n.cm-s-custom-0 .CodeMirror-activeline-background {\r\n\tbackground: rgba(240, 240, 255, 0.8);\r\n}\r\n\r\n.cm-s-custom-0 .CodeMirror-selected {\r\n\tbackground: rgba(55, 55, 77, 0.3);\r\n}\r\n\r\n.cm-s-custom-0 .cm-comment {\r\n\tfont-style: italic;\r\n\tcolor: #676b79;\r\n}\r\n\r\n.cm-s-custom-0 .cm-operator {\r\n\tcolor: #f3f3f3;\r\n}\r\n\r\n.cm-s-custom-0 .cm-string {\r\n\tcolor: #c267f9;\r\n}\r\n\r\n.cm-s-custom-0 .cm-string-2 {\r\n\tcolor: #ffb86c;\r\n}\r\n\r\n.cm-s-custom-0 .cm-tag {\r\n\tcolor: #ff2c6d;\r\n}\r\n\r\n.cm-s-custom-0 .cm-meta {\r\n\tcolor: #b084eb;\r\n}\r\n\r\n.cm-s-custom-0 .cm-number {\r\n\tcolor: #ffb86c;\r\n}\r\n\r\n.cm-s-custom-0 .cm-atom {\r\n\tcolor: #ff2c6d;\r\n}\r\n\r\n.cm-s-custom-0 .cm-keyword {\r\n\tcolor: #b095e4;\r\n}\r\n\r\n.cm-s-custom-0 .cm-variable {\r\n\tcolor: #f73c91;\r\n}\r\n\r\n.cm-s-custom-0 .cm-variable-2 {\r\n\tcolor: #ff9ac1;\r\n}\r\n\r\n.cm-s-custom-0 .cm-variable-3,\r\n.cm-s-custom-0 .cm-type {\r\n\tcolor: #ff9ac1;\r\n}\r\n\r\n.cm-s-custom-0 .cm-def {\r\n\tcolor: #e6e6e6;\r\n}\r\n\r\n.cm-s-custom-0 .cm-property {\r\n\tcolor: #f3f3f3;\r\n}\r\n\r\n.cm-s-custom-0 .cm-unit {\r\n\tcolor: #ffb86c;\r\n}\r\n\r\n.cm-s-custom-0 .cm-attribute {\r\n\tcolor: #d8baea;\r\n}\r\n\r\n.cm-s-custom-0 .CodeMirror-matchingbracket {\r\n\tborder-bottom: 1px dotted #19f9d8;\r\n\tpadding-bottom: 2px;\r\n\tcolor: #e6e6e6;\r\n}\r\n\r\n.cm-s-custom-0 .CodeMirror-gutters {\r\n  background: rgb(19, 19, 37);\r\n  border-right-color: rgb(19, 19, 37);\r\n  width: 40px;\r\n  margin-right: 9px;\r\n}\r\n\r\n.cm-s-custom-0 .CodeMirror-linenumber {\r\n  color: rgb(173, 170, 204);\r\n  opacity: 0.75;\r\n  background: rgb(19, 19, 37);\r\n  padding: 0 10px 0 4px;\r\n  font-size: 14px;\r\n  border-top: 2px solid transparent;\r\n}\r\n\r\n.cm-s-custom-0 .CodeMirror-lines .CodeMirror-code div {\r\n  padding-left: 2px;\r\n}';
@@ -33,7 +36,8 @@ const DEFAULT_JSX_OPTIONS = {
 export  default class Editor extends React.Component {
   state = {
     jsValue: DEFAULT_JS_VALUE || this.props.jsValue,
-    cssValue: DEFAULT_CSS_VALUE || this.props.cssValue
+    cssValue: DEFAULT_CSS_VALUE || this.props.cssValue,
+    inValue: ""
   };
 
   jsxOptions = {
@@ -61,7 +65,12 @@ export  default class Editor extends React.Component {
             options={this.jsxOptions}
             onChange={this.onChange("js")}
           />
-          <Latex output="html">{this.state.jsValue}</Latex>
+          {/* {this.state.inValue = katex.renderToString("c = \\pm\\sqrt{a^2 + b^2}", {
+            throwOnError: false
+          })} */}
+          <div dangerouslySetInnerHTML={{__html: katex.renderToString(this.state.jsValue, {
+            throwOnError: false
+          })}} />
         </SplitPane>
         <Style css={this.state.cssValue} />
       </React.Fragment>
@@ -71,7 +80,6 @@ export  default class Editor extends React.Component {
 
 class PureEditor extends React.PureComponent {
   render() {
-    console.log(`rendering -> ${this.props.name}`);
     return (
       <CodeMirror
         style={{height: '100vh'}}

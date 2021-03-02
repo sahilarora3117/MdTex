@@ -12,6 +12,7 @@
     "concurrently": "^6.0.0",
     "css-to-object": "^1.1.0",
     "electron-is-dev": "^1.2.0",
+    "katex": "^0.10.2",
     "markdown-to-jsx": "^7.1.1",
     "react": "^17.0.1",
     "react-codemirror": "^1.0.0",
@@ -26,17 +27,19 @@
     "web-vitals": "^0.2.4"
   },
   "devDependencies": {
-  "electron-builder": "^22.9.1",
-  "electron": "^11.3.0"
+    "electron": "^11.3.0",
+    "electron-builder": "^22.9.1"
   },
   "build": {
     "appId": "com.github.mdtex",
-    "files": [ "build/**/*", "node_modules/**/*" ],
-    "directories":{
-  "buildResources": "assets"
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
     }
   },
- 
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -64,5 +67,4 @@
       "last 1 safari version"
     ]
   }
-  
 }
