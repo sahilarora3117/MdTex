@@ -5,8 +5,12 @@ import MenuItem from '@material-ui/core/MenuItem';
 import {Launch} from '@material-ui/icons';
 import Typography from '@material-ui/core/Typography';
 import {Link} from 'react-router-dom';
+import ReactFileReader from 'react-file-reader';
 import './Welcome.css';
-export default function SimpleMenu() {
+import { useHistory } from "react-router-dom";
+import reactFileReader from 'react-file-reader';
+export default function SimpleMenu(props) {
+  let history = useHistory();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -16,7 +20,24 @@ export default function SimpleMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  const handleMd = files => {
+    var data = files.base64.split(',');
+    var codata =  atob(data[1]);
+    console.log(codata);
+    history.push({
+      pathname: '/openmd',
+      state: { detail: codata }
+    });
+  }
+  const handleTex = files => {
+    var data = files.base64.split(',');
+    var codata =  atob(data[1]);
+    console.log(codata);
+    history.push({
+      pathname: '/opentex',
+      state: { detail: codata }
+    });
+  }
   return (
     <div>
         <Button 
@@ -40,8 +61,12 @@ export default function SimpleMenu() {
         onClose={handleClose}
         inverted
       >
-        <Link to="/newmd" className="linkers" style={{textDecoration:'none', textDecorationColor:'white' }}><MenuItem>Markdown</MenuItem></Link>
-        <MenuItem>Latex</MenuItem>
+        <ReactFileReader fileTypes={[".md"]} base64={true} handleFiles={ handleMd}>
+          <MenuItem>Markdown</MenuItem>
+        </ReactFileReader>
+        <ReactFileReader fileTypes={[".tex"]} base64={true} handleFiles={handleTex}>
+          <MenuItem>Latex</MenuItem>
+        </ReactFileReader>
       </Menu>
     </div>
   );

@@ -7,7 +7,7 @@ class MdTex extends Component {
         return (
         <div className="container">
             <Navigation />
-			<Editor />
+			<Editor tex={this.props.tex}/>
 		</div>
                 
         );

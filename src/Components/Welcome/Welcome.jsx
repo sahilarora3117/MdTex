@@ -13,7 +13,9 @@ class Welcome extends Component {
             <Router>
                 <Switch>
                     <Route path="/newmd" component={Md} />
+                    <Route path="/openmd" component={openMd} />
                     <Route path="/newtex" component={Tex} />
+                    <Route path="/opentex" component={openTex} />
                     <Route path="/" component={Home} />
                 </Switch>
             </Router>       
@@ -56,12 +58,21 @@ const Home = () => (
 
 )
 
+
 const Md = () => (
     <OpenMarkdown markdown="#this is markdown"></OpenMarkdown>
 )
 
 const Tex = () => (
     <OpenTex tex="tex imdeed"></OpenTex>
+)
+
+const openMd = (props) => (
+    <OpenMarkdown markdown={props.location.state.detail}></OpenMarkdown>
+)
+
+const openTex = (props) => (
+    <OpenTex tex={props.location.state.detail}></OpenTex>
 )
 
 export default Welcome;
