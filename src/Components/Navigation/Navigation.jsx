@@ -1,32 +1,33 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import FolderIcon from '@material-ui/icons/Folder';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-
-const useStyles = makeStyles({
-  root: {
-    width: 500,
-  },
-});
-
-export default function LabelBottomNavigation() {
-  const classes = useStyles();
-  const [value, setValue] = React.useState('recents');
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
+import './Navigation.css'
+import {Navbar, Nav, NavDropdown} from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Link} from 'react-router-dom';
+const Navigation = () => {
   return (
-    <BottomNavigation inverted value={value} onChange={handleChange} className={classes.root}>
-      <BottomNavigationAction inverted label="Recents" value="recents" icon={<RestoreIcon />} />
-      <BottomNavigationAction inverted label="Favorites" value="favorites" icon={<FavoriteIcon />} />
-      <BottomNavigationAction inverted label="Nearby" value="nearby" icon={<LocationOnIcon />} />
-      <BottomNavigationAction inverted label="Folder" value="folder" icon={<FolderIcon />} />
-    </BottomNavigation>
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Link to='/'><Navbar.Brand>MdTex</Navbar.Brand></Link>
+    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+    <Navbar.Collapse id="responsive-navbar-nav">
+      <Nav className="mr-auto">
+        <Nav.Link href="#features">Help</Nav.Link>
+        <NavDropdown title="Download" id="collasible-nav-dropdown">
+          <NavDropdown.Item href="#action/3.1">File</NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.2">pdf</NavDropdown.Item>
+          <NavDropdown.Divider />
+          <NavDropdown.Item href="#action/3.4">help</NavDropdown.Item>
+        </NavDropdown>
+      </Nav>
+      <Nav>
+        <Nav.Link href="#deets">Github</Nav.Link>
+      </Nav>
+    </Navbar.Collapse>
+  </Navbar>
+
   );
 }
+
+export default Navigation;
+
+
+

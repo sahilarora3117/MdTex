@@ -2,7 +2,8 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import {Add, Block, DonutLarge} from '@material-ui/icons';
+import Container from '@material-ui/core/Container'
+import {Add} from '@material-ui/icons';
 import Typography from '@material-ui/core/Typography';
 import {Link} from 'react-router-dom';
 import './Welcome.css';
@@ -18,7 +19,8 @@ export default function SimpleMenu() {
   };
 
   return (
-    <div>
+    <Container>
+
         <Button 
         style={{color:'white', display:'block'}}
         onClick={handleClick}
@@ -43,6 +45,7 @@ export default function SimpleMenu() {
         <Link to="/newmd" className="linkers" style={{textDecoration:'none', textDecorationColor:'white' }}><MenuItem>Markdown</MenuItem></Link>
         <Link to="/newtex" className="linkers" style={{textDecoration:'none', textDecorationColor:'white' }}><MenuItem>Latex</MenuItem></Link>
       </Menu>
-    </div>
+  </Container>
+
   );
 }

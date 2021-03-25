@@ -4,7 +4,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import {Launch} from '@material-ui/icons';
 import Typography from '@material-ui/core/Typography';
-import {Link} from 'react-router-dom';
+import Container from '@material-ui/core/Container';
 import ReactFileReader from 'react-file-reader';
 import './Welcome.css';
 import { useHistory } from "react-router-dom";
@@ -39,7 +39,8 @@ export default function SimpleMenu(props) {
     });
   }
   return (
-    <div>
+    <Container>
+
         <Button 
         style={{color:'white', display:'block'}}
         onClick={handleClick}
@@ -68,6 +69,6 @@ export default function SimpleMenu(props) {
           <MenuItem>Latex</MenuItem>
         </ReactFileReader>
       </Menu>
-    </div>
+    </Container>
   );
 }
