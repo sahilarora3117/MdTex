@@ -60,7 +60,10 @@ export  default class Editor extends React.Component {
             options={this.jsxOptions}
             onChange={this.onChange("js")}
           />
+          <div id="capture">
           <Markdown className="markdown-body markdown-content">{this.state.jsValue}</Markdown>
+          </div>
+          
         </SplitPane>
         <Style css={this.state.cssValue} />
       </React.Fragment>

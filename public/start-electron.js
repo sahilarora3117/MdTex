@@ -1,29 +1,53 @@
 const electron = require('electron'),
   app = electron.app,
-  BrowserWindow = electron.BrowserWindow;
-   
-const path = require('path'),
-  isDev = require('electron-is-dev');
+  BrowserWindow = electron.BrowserWindow,
+  ipcMain = electron.ipcMain,
+  shell = electron.shell,
+  Menu = electron.Menu;
+const path = require('path');
+const os = require('os');
+isDev = require('electron-is-dev');
    
 let mainWindow;
-   
+let workerWindow;
 const createWindow = () => {
-  mainWindow = new BrowserWindow({ width: 480, height: 320 })
+  mainWindow = new BrowserWindow({ width: 480, height: 320, webPreferences: {
+    nodeIntegration: true,
+    preload: __dirname + '/preload.js'
+  }})
   const appUrl = isDev ? 'http://localhost:3000' :
     `file://${path.join(__dirname, '../build/index.html')}`
   mainWindow.loadURL(appUrl)
   mainWindow.maximize()
   mainWindow.setFullScreen(false)
   mainWindow.on('closed', () => mainWindow = null)
+
+
+  workerWindow = new BrowserWindow({webPreferences: {
+    nodeIntegration: true
+  }});
+    workerWindow.loadURL("file://" + __dirname + "/worker.html");
+    workerWindow.hide();
+    workerWindow.on("closed", () => {
+        workerWindow = undefined;
+    });
+
 }
+
+
+
 app.on('ready', createWindow)
 app.on('window-all-closed', () => {
-  // Follow OS convention on whether to quit app when
-  // all windows are closed.
   if (process.platform !== 'darwin') { app.quit() }
 })
 app.on('activate', () => {
-  // If the app is still open, but no windows are open,
-  // create one when the app comes into focus.
   if (mainWindow === null) { createWindow() }
 })
+ipcMain.on("printPDF", function (event, content) {
+  console.log(content);
+  workerWindow.webContents.send("printPDF", content);
+});
+// when worker window is ready
+ipcMain.on("readyToPrintPDF", function (event) {
+    workerWindow.webContents.print({});
+});

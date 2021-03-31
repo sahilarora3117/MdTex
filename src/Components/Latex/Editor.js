@@ -4,7 +4,6 @@ import SplitPane from "react-split-pane";
 import 'katex/dist/katex.min.css';
 import katex from 'katex';
 import './markdown.css';
-import { Block } from "@material-ui/icons";
 require("codemirror/mode/markdown/markdown");
 require("codemirror/lib/codemirror.css");
 require("codemirror/theme/panda-syntax.css");
@@ -63,12 +62,11 @@ export  default class Editor extends React.Component {
             options={this.jsxOptions}
             onChange={this.onChange("js")}
           />
-          {/* {this.state.inValue = katex.renderToString("c = \\pm\\sqrt{a^2 + b^2}", {
-            throwOnError: false
-          })} */}
+          <div id="capture">
           <div dangerouslySetInnerHTML={{__html: katex.renderToString(this.state.jsValue, {
             throwOnError: false
           })}} />
+          </div>        
         </SplitPane>
         <Style css={this.state.cssValue} />
       </React.Fragment>

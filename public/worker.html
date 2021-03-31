@@ -1,0 +1,15 @@
+<head> </head>
+<link rel="stylesheet" href="markdown.css">
+<link rel="stylesheet" href="katex.css">
+<body>
+    <script>
+        const ipcRenderer = require("electron").ipcRenderer;
+
+        ipcRenderer.on("printPDF", (event, content) => {
+            document.body.innerHTML = content;
+            console.log("content")
+            window.print();
+            ipcRenderer.send("readyToPrintPDF");
+        });
+    </script>
+</body>
