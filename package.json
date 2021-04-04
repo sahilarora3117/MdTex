@@ -12,6 +12,7 @@
     "bootstrap": "^4.6.0",
     "concurrently": "^6.0.0",
     "css-to-object": "^1.1.0",
+    "custom-electron-titlebar": "^3.2.6",
     "electron-is-dev": "^1.2.0",
     "html2canvas": "*",
     "jspdf": "^2.3.1",

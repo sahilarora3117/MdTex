@@ -4435,6 +4435,11 @@
   "resolved" "https://registry.npmjs.org/csstype/-/csstype-3.0.6.tgz"
   "version" "3.0.6"
 
+"custom-electron-titlebar@^3.2.6":
+  "integrity" "sha512-P3ZGEr0eouUHqhdBBXllpuy2bFhfSmp+32HQBPcwzujjIsUhQxQj/nCpJiFa4SUGAEp1ifu/icuZdDKNNX72Tw=="
+  "resolved" "https://registry.npmjs.org/custom-electron-titlebar/-/custom-electron-titlebar-3.2.6.tgz"
+  "version" "3.2.6"
+
 "cyclist@^1.0.1":
   "integrity" "sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk="
   "resolved" "https://registry.npmjs.org/cyclist/-/cyclist-1.0.1.tgz"

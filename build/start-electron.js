@@ -2,23 +2,26 @@ const electron = require('electron'),
   app = electron.app,
   BrowserWindow = electron.BrowserWindow,
   ipcMain = electron.ipcMain,
-  shell = electron.shell,
-  Menu = electron.Menu;
+  Notification = electron.Notification
 const path = require('path');
 const os = require('os');
 isDev = require('electron-is-dev');
-   
+
 let mainWindow;
 let workerWindow;
 const createWindow = () => {
   mainWindow = new BrowserWindow({ width: 480, height: 320, webPreferences: {
     nodeIntegration: true,
-    preload: __dirname + '/preload.js'
+    preload: __dirname + '/preload.js',
+    enableRemoteModule: true,
+    titleBarStyle: 'hidden'
+
   }})
   const appUrl = isDev ? 'http://localhost:3000' :
     `file://${path.join(__dirname, '../build/index.html')}`
   mainWindow.loadURL(appUrl)
   mainWindow.maximize()
+  // mainWindow.webContents.openDevTools();
   mainWindow.setFullScreen(false)
   mainWindow.on('closed', () => mainWindow = null)
 
@@ -50,4 +53,13 @@ ipcMain.on("printPDF", function (event, content) {
 // when worker window is ready
 ipcMain.on("readyToPrintPDF", function (event) {
     workerWindow.webContents.print({});
+});
+
+ipcMain.on("notifypdf", function (event) {
+  console.log("Notification sent")
+  new Notification(`New notifcation from MdTex`,
+    {
+       body: "The PDF conersion is now done"
+     }
+  );
 });
