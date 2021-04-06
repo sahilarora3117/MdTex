@@ -23,7 +23,7 @@ const createWindow = () => {
   mainWindow.maximize()
   // mainWindow.webContents.openDevTools();
   mainWindow.setFullScreen(false)
-  mainWindow.on('closed', () => mainWindow = null)
+  mainWindow.on('closed', () => mainWindow = undefined)
 
 
   workerWindow = new BrowserWindow({webPreferences: {
@@ -32,7 +32,7 @@ const createWindow = () => {
     workerWindow.loadURL("file://" + __dirname + "/worker.html");
     workerWindow.hide();
     workerWindow.on("closed", () => {
-        workerWindow = undefined;
+        workerWindow = undefined
     });
 
 }
