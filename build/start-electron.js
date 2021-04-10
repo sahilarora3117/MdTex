@@ -10,12 +10,12 @@ isDev = require('electron-is-dev');
 let mainWindow;
 let workerWindow;
 const createWindow = () => {
-  mainWindow = new BrowserWindow({ width: 480, height: 320, webPreferences: {
+  mainWindow = new BrowserWindow({ width: 1000, height: 1000,
+    transparent: true, frame: false,
+    webPreferences: {
     nodeIntegration: true,
     preload: __dirname + '/preload.js',
     enableRemoteModule: true,
-    titleBarStyle: 'hidden'
-
   }})
   const appUrl = isDev ? 'http://localhost:3000' :
     `file://${path.join(__dirname, '../build/index.html')}`

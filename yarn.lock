@@ -10244,6 +10244,11 @@
   "resolved" "https://registry.npmjs.org/react-codemirror2/-/react-codemirror2-7.2.1.tgz"
   "version" "7.2.1"
 
+"react-custom-electron-titlebar@^3.1.0":
+  "integrity" "sha512-Y6smti7eqqjBhrsoy/GVfEGxEC5PLJMfHdgLrZI52ZDtlrAQqn5IKo3z7T+1rmw4XXJCYCWO9kLLtzdQBQPJtg=="
+  "resolved" "https://registry.npmjs.org/react-custom-electron-titlebar/-/react-custom-electron-titlebar-3.1.0.tgz"
+  "version" "3.1.0"
+
 "react-dev-utils@^11.0.1":
   "integrity" "sha512-4lEA5gF4OHrcJLMUV1t+4XbNDiJbsAWCH5Z2uqlTqW6dD7Cf5nEASkeXrCI/Mz83sI2o527oBIFKVMXtRf1Vtg=="
   "resolved" "https://registry.npmjs.org/react-dev-utils/-/react-dev-utils-11.0.3.tgz"
