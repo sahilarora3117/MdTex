@@ -7,6 +7,7 @@ import {Add} from '@material-ui/icons';
 import Typography from '@material-ui/core/Typography';
 import {Link} from 'react-router-dom';
 import './Welcome.css';
+import './Labels.css';
 export default function SimpleMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 

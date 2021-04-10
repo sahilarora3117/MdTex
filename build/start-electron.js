@@ -21,7 +21,7 @@ const createWindow = () => {
     `file://${path.join(__dirname, '../build/index.html')}`
   mainWindow.loadURL(appUrl)
   mainWindow.maximize()
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
   mainWindow.setFullScreen(false)
   mainWindow.on('closed', () => mainWindow = undefined)
 

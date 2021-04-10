@@ -8,7 +8,7 @@ import Container from '@material-ui/core/Container';
 import ReactFileReader from 'react-file-reader';
 import './Welcome.css';
 import { useHistory } from "react-router-dom";
-import reactFileReader from 'react-file-reader';
+import './Labels.css';
 export default function SimpleMenu(props) {
   let history = useHistory();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -39,7 +39,7 @@ export default function SimpleMenu(props) {
     });
   }
   return (
-    <Container>
+    <Container style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
 
         <Button 
         style={{color:'white', display:'block'}}
@@ -47,7 +47,7 @@ export default function SimpleMenu(props) {
         size='large'
         >
           <Launch style={{ fontSize: 55, display:'block'}}/>
-          <Typography style={{ fontSize: 24, display:'block', alignContent:'center' }}>
+          <Typography style={{ fontSize: 24, display:'block' }}>
             Open
           </Typography>
         
