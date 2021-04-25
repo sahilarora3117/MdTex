@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import OpenMarkdown from '../OpenMarkdown/OpenMarkdown'
 import OpenTex from '../OpenTex/OpenTex'
@@ -7,7 +7,6 @@ import New from './New';
 import Launch from './Open'
 import Help from './Help';
 import Github from './Github';
-import {Container, Grid, Typography} from '@material-ui/core'
 class Welcome extends Component {
     render() {
         return (
@@ -29,28 +28,6 @@ class Welcome extends Component {
 
 
 const Home = () => (
-//     <Container className="something">
-//     <Grid
-//      container
-//      direction="row"
-//      justify="center"
-//      alignItems="center"
-//      spacing={3}
-//      >
-//          <Grid item xs={3}>
-//             <New />
-//          </Grid>
-//          <Grid item xs={3}>
-//             <Launch />
-//          </Grid>
-//          <Grid item xs={3}>
-//              <Help />
-//          </Grid>
-//          <Grid item xs={3}>
-//              <Github />
-//          </Grid>
-//      </Grid>
-// </Container>
             <div className="menuformat">
                 <New className="menuitem"/>
                 <Launch className="menuitem"/>

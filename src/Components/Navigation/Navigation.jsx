@@ -3,6 +3,8 @@ import './Navigation.css'
 import {Navbar, Nav, NavDropdown} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Link} from 'react-router-dom';
+import './FileDownloader';
+import FormDialog from './FileDownloader';
 const exportPdf = () => {
   console.log("clicked")
   window.ipcRenderer.send("printPDF", document.getElementById("capture").innerHTML);
@@ -18,7 +20,7 @@ const Navigation = () => {
       <Nav className="mr-auto">
         <Nav.Link>Help</Nav.Link>
         <NavDropdown title="Download" id="collasible-nav-dropdown">
-          <NavDropdown.Item >File</NavDropdown.Item>
+          <FormDialog />
           <NavDropdown.Item onClick={() =>exportPdf()}>pdf</NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item>help</NavDropdown.Item>

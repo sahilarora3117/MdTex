@@ -53,13 +53,17 @@ export  default class Editor extends React.Component {
 
         </div>
         <SplitPane split="vertical" defaultSize="50%">
-          <PureEditor
+        <div id="source">
+        <PureEditor
             name="js"
             style={{height: '100vh'}}
             value={this.state.jsValue}
             options={this.jsxOptions}
             onChange={this.onChange("js")}
           />
+        </div>
+          
+
           <div id="capture">
           <Markdown className="markdown-body markdown-content">{this.state.jsValue}</Markdown>
           </div>

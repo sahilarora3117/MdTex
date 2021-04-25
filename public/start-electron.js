@@ -2,18 +2,37 @@ const electron = require('electron'),
   app = electron.app,
   BrowserWindow = electron.BrowserWindow,
   ipcMain = electron.ipcMain,
-  Notification = electron.Notification
+  Notification = electron.Notification,
+  shell = electron.shell
 const path = require('path');
 const os = require('os');
 isDev = require('electron-is-dev');
-
+const contextMenu = require('electron-context-menu');
 let mainWindow;
 let workerWindow;
+contextMenu({
+  
+	prepend: (defaultActions, parameters, browserWindow, spellcheck) => [
+		spellcheck,
+    {
+			label: 'Rainbow',
+			visible: parameters.mediaType === 'image'
+		},
+		{
+			label: 'Search Google for “{selection}”',
+			visible: parameters.selectionText.trim().length > 0,
+			click: () => {
+				shell.openExternal(`https://google.com/search?q=${encodeURIComponent(parameters.selectionText)}`);
+			}
+		}
+	]
+});
 const createWindow = () => {
   mainWindow = new BrowserWindow({ width: 1000, height: 1000,
     transparent: true, frame: false,
     webPreferences: {
     nodeIntegration: true,
+    spellcheck: true,
     preload: __dirname + '/preload.js',
     enableRemoteModule: true,
   }})
@@ -21,7 +40,7 @@ const createWindow = () => {
     `file://${path.join(__dirname, '../build/index.html')}`
   mainWindow.loadURL(appUrl)
   mainWindow.maximize()
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
   mainWindow.setFullScreen(false)
   mainWindow.on('closed', () => mainWindow = undefined)
 
