@@ -4,7 +4,7 @@ import SplitPane from "react-split-pane";
 import 'katex/dist/katex.min.css';
 import katex from 'katex';
 import './markdown.css';
-require("codemirror/mode/markdown/markdown");
+require("codemirror/mode/stex/stex");
 require("codemirror/lib/codemirror.css");
 require("codemirror/theme/panda-syntax.css");
 require("codemirror/theme/material.css");
@@ -21,7 +21,7 @@ const DEFAULT_JSX_OPTIONS = {
   theme: "custom-0",
   autoCloseBrackets: true,
   cursorScrollMargin: 48,
-  mode: "markdown",
+  mode: "stex",
   lineNumbers: true,
   indentUnit: 2,
   tabSize: 2,
@@ -41,14 +41,15 @@ export  default class Editor extends React.Component {
     ...DEFAULT_JSX_OPTIONS,
     ...this.props.jsxOptions
   };
-
-
+  
 
   onChange = which => (editor, data, value) => {
     this.setState({ [`${which}Value`]: value });
+    localStorage.setItem("filetoshow", value);
   };
 
   render() {
+    
     return (
       <React.Fragment>
         <div className="topbar"> 

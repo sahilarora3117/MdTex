@@ -10,13 +10,9 @@
             document.body.innerHTML = content;
             console.log("content")
             Promise.all(Array.from(document.images).filter(img => !img.complete).map(img => new Promise(resolve => { img.onload = img.onerror = resolve; }))).then(() => {
-                window.print();
-                ipcRenderer.send("readyToPrintPDF");
-                Notification.requestPersmission().then(function(result){
-                    var mynotification = new Notification('MdTex', {
-                        body: "File converted to PDF."
-                    })
-                })
+                    window.print();
+           
+                
             });
             
         });

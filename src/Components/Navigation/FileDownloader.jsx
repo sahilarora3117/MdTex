@@ -7,6 +7,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import {NavDropdown} from 'react-bootstrap';
+import { wait } from '@testing-library/dom';
 
 
 export default function FormDialog() {
@@ -20,17 +21,12 @@ export default function FormDialog() {
     setOpen(false);
   };
   const startDownload = () => {
-    console.log(filename);
-    var element = document.createElement('a');
-  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(document.getElementsByName('js')));
-  element.setAttribute('download', filename);
-
-  element.style.display = 'none';
-  document.body.appendChild(element);
-
-  element.click();
-
-  document.body.removeChild(element);
+    const element = document.createElement("a");
+    const file = new Blob([localStorage.getItem("filetoshow")], {type: 'text/plain'});
+    element.href = URL.createObjectURL(file);
+    element.download = filename;
+    document.body.appendChild(element); // Required for this to work in FireFox
+    element.click();
   }
 
   return (

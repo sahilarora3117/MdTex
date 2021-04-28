@@ -29,7 +29,7 @@ contextMenu({
 });
 const createWindow = () => {
   mainWindow = new BrowserWindow({ width: 1000, height: 1000,
-    transparent: true, frame: false,
+    transparent: true,
     webPreferences: {
     nodeIntegration: true,
     spellcheck: true,
@@ -40,22 +40,21 @@ const createWindow = () => {
     `file://${path.join(__dirname, '../build/index.html')}`
   mainWindow.loadURL(appUrl)
   mainWindow.maximize()
-  mainWindow.webContents.openDevTools();
   mainWindow.setFullScreen(false)
   mainWindow.on('closed', () => mainWindow = undefined)
 
 
   workerWindow = new BrowserWindow({webPreferences: {
-    nodeIntegration: true
+    nodeIntegration: true,
   }});
+
     workerWindow.loadURL("file://" + __dirname + "/worker.html");
     workerWindow.hide();
+    workerWindow.webContents.openDevTools();
     workerWindow.on("closed", () => {
-        workerWindow = undefined
+        workerWindow = undefined;
     });
-
 }
-
 
 
 app.on('ready', createWindow)
@@ -63,16 +62,13 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') { app.quit() }
 })
 app.on('activate', () => {
-  if (mainWindow === null) { createWindow() }
+  if (mainWindow === null) { createWindow()  }
 })
 ipcMain.on("printPDF", function (event, content) {
   console.log(content);
   workerWindow.webContents.send("printPDF", content);
 });
-// when worker window is ready
-ipcMain.on("readyToPrintPDF", function (event) {
-    workerWindow.webContents.print({});
-});
+
 
 ipcMain.on("notifypdf", function (event) {
   console.log("Notification sent")

@@ -44,6 +44,7 @@ export  default class Editor extends React.Component {
 
   onChange = which => (editor, data, value) => {
     this.setState({ [`${which}Value`]: value });
+    localStorage.setItem("filetoshow", value);
   };
 
   render() {
@@ -77,7 +78,6 @@ export  default class Editor extends React.Component {
 
 class PureEditor extends React.PureComponent {
   render() {
-    console.log(`rendering -> ${this.props.name}`);
     return (
       <CodeMirror
         style={{height: '100vh'}}
