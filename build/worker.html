@@ -10,8 +10,7 @@
             document.body.innerHTML = content;
             console.log("content")
             Promise.all(Array.from(document.images).filter(img => !img.complete).map(img => new Promise(resolve => { img.onload = img.onerror = resolve; }))).then(() => {
-                    window.print();
-           
+    window.print();
                 
             });
             

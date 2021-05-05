@@ -78,3 +78,6 @@ ipcMain.on("notifypdf", function (event) {
      }
   );
 });
+const dispose = contextMenu();
+
+dispose();
