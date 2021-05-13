@@ -5,9 +5,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Link} from 'react-router-dom';
 import './FileDownloader';
 import FormDialog from './FileDownloader';
+import Help from './Help';
 const exportPdf = () => {
   console.log("clicked")
   window.ipcRenderer.send("printPDF", document.getElementById("capture").innerHTML);
+}
+
+const OpenGithub = () => {
+  window.shell.openExternal(`https://github.com/sahilarora3117/MdTex/issues`);
 }
 
 
@@ -18,16 +23,15 @@ const Navigation = () => {
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
     <Navbar.Collapse id="responsive-navbar-nav">
       <Nav className="mr-auto">
-        <Nav.Link>Help</Nav.Link>
+        <Help />
         <NavDropdown title="Download" id="collasible-nav-dropdown">
           <FormDialog />
-          <NavDropdown.Item onClick={() =>exportPdf()}>pdf</NavDropdown.Item>
           <NavDropdown.Divider />
-          <NavDropdown.Item>help</NavDropdown.Item>
+          <NavDropdown.Item onClick={() =>exportPdf()}>Convert to PDF</NavDropdown.Item>
         </NavDropdown>
       </Nav>
       <Nav>
-        <Nav.Link>Github</Nav.Link>
+        <Nav.Link onClick={() => OpenGithub()}>Github</Nav.Link>
       </Nav>
     </Navbar.Collapse>
   </Navbar>

@@ -7,7 +7,6 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import {NavDropdown} from 'react-bootstrap';
-import { wait } from '@testing-library/dom';
 
 
 export default function FormDialog() {
@@ -32,7 +31,7 @@ export default function FormDialog() {
   return (
     <div>
       <NavDropdown.Item onClick={handleClickOpen}>
-            File
+            Download as File
       </NavDropdown.Item>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Download File</DialogTitle>

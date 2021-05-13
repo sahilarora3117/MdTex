@@ -8,16 +8,16 @@ import './Welcome.css';
 import './Labels.css';
 export default function SimpleMenu() {
 
-  const handleClick = (event) => {
-  };
-
+  const OpenGithub = () => {
+    window.shell.openExternal(`https://github.com/sahilarora3117/MdTex/issues`);
+  }
 
   return (
     <Container>
 
         <Button 
         style={{color:'white', display:'block'}}
-        onClick={handleClick}
+        onClick={OpenGithub}
         size='large'
         >
           <GitHub style={{ fontSize: 55, display:'block'}}/>

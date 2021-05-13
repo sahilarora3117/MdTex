@@ -3,7 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import $ from 'jquery';
+$(document).on('click', 'a[href^="http"]', function(event) {
+  event.preventDefault();
+  window.shell.openExternal(this.href);
+});
 ReactDOM.render(
+  
   <React.StrictMode>
     <App />
   </React.StrictMode>,
